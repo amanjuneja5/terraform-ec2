@@ -23,7 +23,7 @@ jobs:
       run: terraform init
 
     - name: Terraform Plan
-      run: terraform plan -f values.tfvars
+      run: terraform plan -var-file=values.tfvars
 
     - name: Terraform Apply
-      run: terraform apply -f values.tfvars -auto-approve
+      run: terraform apply -var-file=values.tfvars -auto-approve
