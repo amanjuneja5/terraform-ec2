@@ -1,6 +1,8 @@
 name: Create EC2 Instance
 
 on:
+  workflow_dispatch:
+  
   push:
     branches:
       - main  # Trigger workflow on push to the main branch
