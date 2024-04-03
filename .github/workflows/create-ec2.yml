@@ -15,6 +15,10 @@ on:
         description: 'EC2 instance type'
         required: true
         default: 't2.micro'
+      action:
+        description: 'TF action to apply/delete'
+        required: true
+        default: 'apply'
 
   # push:
   #   branches:
@@ -50,4 +54,4 @@ jobs:
 
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve -var="instance_name=${{ github.event.inputs.instanceName }}" -var="aws_region=${{ github.event.inputs.awsRegion }}" -var="instance_type=${{ github.event.inputs.instanceType }}"
+      run: terraform ${{ github.event.inputs.actions }} -auto-approve -var="instance_name=${{ github.event.inputs.instanceName }}" -var="aws_region=${{ github.event.inputs.awsRegion }}" -var="instance_type=${{ github.event.inputs.instanceType }}"
