@@ -1,5 +1,5 @@
 provider "aws" {
-  region = var.region  # Set your desired region
+  region = var.aws_region  # Set your desired region
 }
 
 data "aws_ami" "default" {
@@ -24,7 +24,7 @@ resource "aws_instance" "ec2" {
   }
 }
 
-variable "region" {
+variable "aws_region" {
     type = string
     description = "AWS region"
 }
