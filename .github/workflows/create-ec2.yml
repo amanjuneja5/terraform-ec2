@@ -52,7 +52,7 @@ jobs:
     - name: Terraform Plan
       run:  env TF_VAR_instance_name=${{ github.event.inputs.instanceName }} \
             TF_VAR_aws_region=${{ github.event.inputs.awsRegion }} \
-            TF_VAR_instance_type=${{ github.event.inputs.instanceType }} \ 
+            TF_VAR_instance_type=${{ github.event.inputs.instanceType }}
             terraform plan 
    
     - name: Terraform Apply
