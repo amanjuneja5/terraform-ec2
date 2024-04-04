@@ -59,4 +59,4 @@ jobs:
       run: terraform plan -var instance_name=${{ github.event.inputs.environment }}-${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_type=${{ github.event.inputs.instanceType }} -var instance_count=${{ github.event.inputs.instanceCount }}
     
     - name: Terraform Apply
-      run: terraform apply -auto-approve -var instance_name=${{ github.event.inputs.environment }}-${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_count=${{ github.event.inputs.instanceCount }}
+      run: terraform apply -auto-approve -var instance_name=${{ github.event.inputs.environment }}-${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_type=${{ github.event.inputs.instanceType }} -var instance_count=${{ github.event.inputs.instanceCount }}
