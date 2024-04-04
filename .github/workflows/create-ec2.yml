@@ -3,9 +3,17 @@ name: Create EC2 Instance
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        description: 'environment'
+        required: true
+        default: 'dev'
       instanceName:
         description: 'Name of the EC2 instance'
         required: true
+      instanceCount:
+        description: 'No of instances'
+        required: true
+        default: "1"
       awsRegion:
         description: 'AWS region'
         required: true
@@ -48,8 +56,8 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
-    # - name: Terraform Plan
-    #   run: terraform plan -var instance_name=${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_type=${{ github.event.inputs.instanceType }}
+    - name: Terraform Plan
+      run: terraform plan -var instance_name=${{ github.event.inputs.environment }}-${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_type=${{ github.event.inputs.instanceType }} -var instance_count=${{ github.event.inputs.instanceCount }}
     
     - name: Terraform Apply
-      run: terraform apply -auto-approve -var instance_name=${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_type=${{ github.event.inputs.instanceType }}
+      run: terraform apply -auto-approve -var instance_name=${{ github.event.inputs.environment }}-${{ github.event.inputs.instanceName }} -var aws_region=${{ github.event.inputs.awsRegion }} -var instance_count=${{ github.event.inputs.instanceCount }}

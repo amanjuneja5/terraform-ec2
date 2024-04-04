@@ -17,10 +17,11 @@ data "aws_ami" "default" {
 
 
 resource "aws_instance" "ec2" {
+    count = var.instance_count
     ami           = data.aws_ami.default.id
     instance_type = var.instance_type
     tags = {
-    Name = var.instance_name
+      Name = "${var.instance_name}-${count.index}"
   }
 }
 
@@ -37,4 +38,10 @@ variable "instance_type" {
 variable "instance_name" {
     type = string
     description = "Instance name tag"
+}
+
+variable "instance_count" {
+    type = number
+    description = "No of instance to be created" 
+    default = 1
 }
