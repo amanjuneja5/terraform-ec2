@@ -13,7 +13,6 @@ on:
       instanceCount:
         description: 'No of instances'
         required: true
-        default: "1"
       awsRegion:
         description: 'AWS region'
         required: true
