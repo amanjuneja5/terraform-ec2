@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: terraform-ec2
   annotations:
-    github.com/project-slug: ajay-infracloud/terraform-ec2
+    github.com/project-slug: amanjuneja5/terraform-ec2
 spec:
   type: service
   lifecycle: unknown
